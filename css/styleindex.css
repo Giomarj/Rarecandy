@@ -1,0 +1,220 @@
+.zerif-copyright-box {
+display: none;
+}
+.sidebar-wrap {
+display: none;
+}
+.content-left-wrap {
+width: 100%;
+}
+.blog .sidebar-wrap {
+display: none;
+}
+.blog .content-left-wrap {
+width: 100%;
+}
+.copyright{
+        display: none;
+}
+.header-content-wrap{
+        padding: 250px 0 250px;
+}
+.about-us {
+        background:#284c34;
+        opacity: 0.95;
+}
+
+.about-us p{
+        color: #F8F8FF;
+        font-size: 20px;
+        text-align : justify;
+}
+#footer{
+        background:#ffff;
+        opacity:0.95;
+}
+.company-details {
+
+                font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+
+}
+.section-header h2,.section-legend{
+                color: #e6ffff;
+        text-shadow:
+                0 0 5px rgba(0,178,255,1),
+                0 0 10px rgba(0,178,255,1),
+                0 0 20px rgba(0,178,255,1),
+                0 0 40px rgba(38,104,127,1),
+                0 0 80px rgba(38,104,127,1),
+                0 0 90px rgba(38,104,127,1),
+                0 0 100px rgba(38,104,127,1),
+                0 0 140px rgba(38,104,127,1),
+                0 0 180px rgba(38,104,127,1)
+}
+
+.intro-text{
+        background-image:       url("https://saltotech.com/wp-content/uploads/2019/05/WhatsApp-Image-2019-05-29-at-4.04.07-PM.jpeg");
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size: 60% 90%;
+        height: 470px;
+        color:#284c34;
+        opacity: 0;
+}
+.intro-text {
+  animation-duration: 8s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+        0% {
+                opacity: 0;
+        }
+        50%{
+                opacity:1;
+        }
+        100%  {
+                opacity: 0;
+        }
+
+}
+body.custom-background {
+        width: 100%;
+
+        animation: movimiento 80s infinite linear alternate;
+}
+@keyframes movimiento{
+        from{
+                background-position: bottom left
+        }to{
+                background-position: top right
+        }
+}
+.green-btn {
+        background: #284c34;
+}
+.red-btn {
+    background: #878988;
+}
+ #extra2{
+        position:absolute;
+          font-family: "Latin Modern Roman 10";
+  font-style: oblique;
+         line-height:0.9;
+        color: #ffff;
+        z-index:1;
+        top:35%;
+        left:30%;
+  animation-duration: 16s;
+  animation-name: slidein2;
+         font-size: 400%;
+         width: 42%;
+         height: 20%;
+         text-align:center;
+          text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+  color: #FFF;
+
+}
+@keyframes slidein2 {
+
+        0% {
+                opacity: 0;
+        }
+        50%{
+                opacity:0;
+        }
+        100%  {
+                opacity: 1;
+        }
+
+}
+
+@media (max-width: 720px) {
+        .intro-text{
+                height: 435px;
+                background-size: 60% 70%;
+        }
+        #extra2{
+                 width: 90%;
+                 top:35%;
+                 left:5%;
+
+        }
+        .header-content-wrap{
+        padding: 90px 0 90px;
+}
+        body.custom-background {
+        animation: movimiento 7s infinite linear alternate;
+}
+
+}
+@media (max-width: 600px) {
+        #extra2{
+        left:5%;
+        top:45%;
+        font-size: 200%;
+        }
+        .intro-text{
+                height: 380px;
+                                background-size: 70% 50%;
+        }
+        .header-content-wrap{
+        padding: 50px 0 50px;
+}
+        body.custom-background {
+        animation: movimiento 10s infinite linear alternate;
+}
+}
+
+img.wp-smiley,
+img.emoji {
+        display: inline !important;
+        border: none !important;
+        box-shadow: none !important;
+        height: 1em !important;
+        width: 1em !important;
+        margin: 0 .07em !important;
+        vertical-align: -0.1em !important;
+        background: none !important;
+        padding: 0 !important;
+}
+
+ul.logado {
+    width: 100%;
+    padding: 10px;
+}
+.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.header .dropdown-toggle {
+    border: none;
+    border-left: 1px solid #ddd;
+    margin-left: 10px;
+}
+
+.page-template-builder-fullwidth {
+        overflow: hidden;
+}
+@media (min-width: 768px) {
+        .page-template-builder-fullwidth-std .header > .elementor {
+                padding-top: 76px;
+        }
+}
+.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}
+
+body.custom-background { background-image: url("https://saltotech.com/wp-content/uploads/2019/06/alexandru-acea-1085875-unsplash.jpg"); background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: fixed; }
