@@ -11,7 +11,7 @@
 	
 	$tipo=$vector['tipo'];
 	
-print("<div class=\"menu_izq\" >
+print("<div class=\"menu_izq bs-navbar-collapse\" >
 	<ul class=\"menu\">");
 	
 	if(strcmp($tipo,"admin")==0)
