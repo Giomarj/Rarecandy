@@ -1,5 +1,5 @@
 <?php 
-    include_once "/clases/bib_emailBoletin.php";
+    include_once "clases/bib_emailBoletin.php";
 if (isset($_POST['pirate-forms-contact-name'], $_POST['pirate-forms-contact-email'], $_POST['pirate-forms-contact-subject'], $_POST['pirate-forms-contact-message'])) {
     if (isset($_POST['title7']) && !empty($_POST['title7'])) {
         die();
@@ -102,7 +102,137 @@ if (isset($_POST['pirate-forms-contact-name'], $_POST['pirate-forms-contact-emai
 
                 <div class="row">
 
-                                <span id="zerif_team-widget-6" class="">
+
+
+
+
+
+
+
+      <div class="wrap">
+        <div class="tarjeta-wrap" id="uno">
+          <div class="tarjeta">
+            <div class="adelante">
+                <img src="img/LogoMakr_0Pip59-150x150.png" alt="" style=" width: 50%;  margin-top: 25%;" />
+                <br><br>
+                <h3 class="dark-text">Tu propia pagina web</h3>
+            </div>
+            <div class="atras">
+              <p align="justify">En saltotech desarrollamos páginas webs que
+                              se encuentran perfectamente integradas dentro de nuestras estrategias de Inbound Marketing.
+                               No basta con tener una web con un diseño espectacular, sino que tiene que estar diseñada y
+                                alineada una estrategia que va mucho más allá de tener una presencia online de tu marca.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tarjeta-wrap" id="dos">
+          <div class="tarjeta">
+            <div class="adelante" >
+                <img src="img/LogoMakr_2AEOOi-150x150.png" alt="" style=" width: 50%;  margin-top: 25%;"/>
+                <br><br>
+                <h3 class="dark-text">BI / Base de datos</h3>
+            </div>
+            <div class="atras">
+              <p align="justify">Instrumentando las soluciones a través
+                              de las aplicaciones de diferente plataformas de Inteligencia de Negocios.
+                               Saltotech sirve a sus clientes en la integración de fuentes de datos,
+                               sistemas de soporte a la toma de decisiones, aplicaciones analíticas y
+                               sistemas de indicadores de gestión.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tarjeta-wrap" id="tres">
+          <div class="tarjeta">
+            <div class="adelante" > <!-- style="background-image: url(img/econtrolaccesos-150x150.png);" -->
+                <img src="img/econtrolaccesos-150x150.png" alt=""style=" width: 50%;  margin-top: 25%;"/>
+                <br><br>
+                <h3 class="dark-text">Control de acceso</h3>
+            </div>
+            <div class="atras">
+              <p align="justify">Nuestro interés está orientado a facilitar servicios
+                               de instalación, mantenimiento y soporte de sistemas de control acceso y registro de horario
+                               . proporcionando la confianza y asesorado por especialista para garantizar nuestros servicios.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tarjeta-wrap" id="cuatro">
+          <div class="tarjeta">
+            <div class="adelante">
+                <img src="img/Sevices-150x149.png" alt="" style=" width: 50%;  margin-top: 25%;"/>
+                <br><br>
+                <h3 class="dark-text">Servicios de dominio</h3>
+            </div>
+            <div class="atras">
+              <p align="justify">Administracion Creacion Host Domain, Suite Ip ,Redes, Certificacion IP, Levantamiento Parte Informatico, Actualizacion / Asesoria Software Hardware, Alojamiento Cloud, Administracion de Ctas de correo y perfiles usuarios.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="tarjeta-wrap" id="cinco">
+          <div class="tarjeta">
+            <div class="adelante">
+                <img src="img/ImageSAPService.png" alt="" style=" width: 50%;  margin-top: 25%;"/>
+                <br><br><br>
+                <h3 class="dark-text">SAP BusinessObjects Business Intelligence Suite</h3>
+            </div>
+            <div class="atras">
+              <p align="justify">Desarrolle y comparta ideas, tome mejores decisiones con la suite de SAP BusinessObjects Business Intelligence (BI). Ofrecemos una larga experiencia en implementación de proyectos de SAP BO –BI, basados la arquitectura flexible que proporciona dicha plataforma de análisis de información que servirán tanto para amientes de unos pocos usuarios hasta decenas de miles de usuarios, mejorando la toma de decisiones y respaldando su crecimiento desde una sola herramienta hasta múltiples herramientas e interfaces.                                     
+</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tarjeta-wrap" id="seis">
+          <div class="tarjeta">
+            <div class="adelante">
+                <img src="img/imagenr.jpg" alt="" style=" width: 50%;  margin-top: 25%;"/>
+                <br><br>
+                <h3 class="dark-text">Desarrollar aplicaciones web Empresariales</h3>
+            </div>
+            <div class="atras">
+              <p align="justify">Somos especialistas en diseño y desarrollo de aplicaciones Web a medida de tus necesidades, acumulamos una amplia experiencia en programación Web para asesorarte y guiarte en tu proyecto, con nosotros conseguirás alcanzar tus metas y objetivos.</p>
+            </div>
+          </div>
+        </div>
+
+<!--         <div class="tarjeta-wrap">
+          <div class="tarjeta">
+            <div class="adelante" style="background-image: url(img/5.jpg);">
+            </div>
+            <div class="atras">
+              <p align="justify">qweqweqweqweqweqwqweqweq, qweqweqweqweqweqweqeqw</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tarjeta-wrap">
+          <div class="tarjeta">
+            <div class="adelante" style="background-image: url(img/7.jpg);">
+
+            </div>
+            <div class="atras">
+              <p align="justify">qweqweqweqweqweqwqweqweq, qweqweqweqweqweqweqeqw</p>
+            </div>
+          </div>
+        </div>
+ -->
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+<!--                                 <span id="zerif_team-widget-6" class="">
                         <div class="col-lg-3 col-sm-3 team-box">
 
                                 <div class="team-member" tabindex="0">
@@ -271,7 +401,7 @@ if (isset($_POST['pirate-forms-contact-name'], $_POST['pirate-forms-contact-emai
 
                         </div>
 
-                        </span>
+                        </span> -->
                 </div>
 
         </div> <!-- / END CONTAINER -->

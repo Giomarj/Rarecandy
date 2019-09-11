@@ -5,13 +5,13 @@
     session_start();
     
 
-    include "/clases/fun_aux_menu.php";
-	include_once "/clases/conexion.php";
-	include_once "/clases/fechas.php";
-	include_once "/clases/seguridad.php";
-	include_once "/clases/paginacion_intranet.php";
-    include_once "/clases/cliente_incidencia_web.php";
-    include_once "/clases/cliente_incidencia_respuesta_web.php";
+    include "clases/fun_aux_menu.php";
+	include_once "clases/conexion.php";
+	include_once "clases/fechas.php";
+	include_once "clases/seguridad.php";
+	include_once "clases/paginacion_intranet.php";
+    include_once "clases/cliente_incidencia_web.php";
+    include_once "clases/cliente_incidencia_respuesta_web.php";
 	    
     Seguridad();
     Admin();

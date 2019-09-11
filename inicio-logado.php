@@ -1,8 +1,8 @@
 <?php 
 session_start();
-    include "/clases/fun_aux_menu.php";
-    include "/clases/conexion.php";
-    include "/clases/seguridad.php";
+    include "clases/fun_aux_menu.php";
+    include "clases/conexion.php";
+    include "clases/seguridad.php";
 
     $conexion = new conexion();
     

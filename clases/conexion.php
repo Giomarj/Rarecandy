@@ -6,10 +6,10 @@ var $BD;
 //Constructor
 function conexion(){
 
-	$bd_nombre="saltotech";
-	$bd_usuario="root";
-	$bd_password="";
-	$bd_ubicacion="localhost";
+	$bd_nombre="6695212_saltotech";
+	$bd_usuario="saltotech";
+	$bd_password="zDl#f521";
+	$bd_ubicacion="PMYSQL108.dns-servicio.com:3306";
 
 	date_default_timezone_set('Europe/Madrid');
 	/*
@@ -83,6 +83,6 @@ function BD_GetTupla($resultado)
 // Libera el resultado de una consulta
 function BD_BorraResultado($resultado)
 {
-	mysql_free_result($resultado);
+	mysql_free_result($resulta);
 }
 }?>

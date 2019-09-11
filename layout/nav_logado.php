@@ -42,7 +42,7 @@
 
                                 <div class="navbar-brand" itemscope itemtype="http://schema.org/Organization">
 
-                                        <a href="https://saltotech.com/" class="custom-logo-link" rel="home"><img width="559" height="414" src="https://saltotech.com/wp-content/uploads/2019/05/cropped-WhatsApp-Image-2019-05-29-at-4.04.07-PM.jpeg" class="custom-logo" alt="Saltotech" srcset="https://saltotech.com/wp-content/uploads/2019/05/cropped-WhatsApp-Image-2019-05-29-at-4.04.07-PM.jpeg 559w, https://saltotech.com/wp-content/uploads/2019/05/cropped-WhatsApp-Image-2019-05-29-at-4.04.07-PM-300x222.jpeg 300w" sizes="(max-width: 559px) 100vw, 559px" /></a>
+                                        <a href="https://saltotech.com/" class="custom-logo-link" rel="home"><img width="559" height="414" src="img/cropped-WhatsApp-Image-2019-05-29-at-4.04.07-PM.jpeg" class="custom-logo" alt="Saltotech" srcset="img/cropped-WhatsApp-Image-2019-05-29-at-4.04.07-PM.jpeg 559w, img/cropped-WhatsApp-Image-2019-05-29-at-4.04.07-PM-300x222.jpeg 300w" sizes="(max-width: 559px) 100vw, 559px" /></a>
                                 </div> <!-- /.navbar-brand -->
 
                         </div> <!-- /.navbar-header -->

@@ -1,12 +1,12 @@
 <?php 
 session_start();
-    include "/clases/fun_aux_menu.php";
-	include_once "/clases/conexion.php";
-	include_once "/clases/fechas.php";
-	include_once "/clases/seguridad.php";
-	include_once "/clases/paginacion_intranet.php";
-	include_once "/clases/cliente.php";	
-	include_once "/clases/provincia.php";
+    include "clases/fun_aux_menu.php";
+	include_once "clases/conexion.php";
+	include_once "clases/fechas.php";
+	include_once "clases/seguridad.php";
+	include_once "clases/paginacion_intranet.php";
+	include_once "clases/cliente.php";	
+	include_once "clases/provincia.php";
 
 
 	$cliente = new cliente();
@@ -94,11 +94,11 @@ session_start();
 					           			 	<div class="col-md-2"></div>	
 									 		<div class="col-md-5">
 									 			<label style="float: left;"><i class="fa fa-calendar" style="padding-right:3px; padding-bottom: 4px;"></i> Desde:</label>
-					               				 <input type='text' class="form-control" name="daterange2" id="daterange2" value="<?PHP print($daterange2);?>" placeholder="Seleccione Rango de Fecha" style="padding: 6px 65px;" />									 			
+					               				 <input type='text' class="form-control" name="daterange2" id="daterange2" value="<?PHP print($daterange2);?>" placeholder="Seleccione Rango de Fecha" style="padding: 6px 65px;" autocomplete="off" />									 			
 									 		</div>
 									 		<div class="col-md-5">
 									 			<label style="float: left;"><i class="fa fa-calendar" style="padding-right:4px; padding-bottom: 4px;"></i>Hasta:</label>
-					               				 <input type='text' style="padding: 6px 65px;" class="form-control" name="daterange3" id="daterange3" value="<?PHP print($daterange3);?>" placeholder="Seleccione Rango de Fecha" />									 			
+					               				 <input type='text' style="padding: 6px 65px;" class="form-control" name="daterange3" id="daterange3" value="<?PHP print($daterange3);?>" placeholder="Seleccione Rango de Fecha" autocomplete="off"/>									 			
 									 		</div>
 
 					            </div>

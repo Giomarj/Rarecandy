@@ -11,7 +11,8 @@
 	
 	$tipo=$vector['tipo'];
 	
-print("<div class=\"menu_izq bs-navbar-collapse\" >
+print("<nav class=\"navbar-collapse bs-navbar-collapse collapse\">
+	<div class=\"menu_izq bs-navbar-collapse\" >
 	<ul class=\"menu\">");
 	
 	if(strcmp($tipo,"admin")==0)
@@ -37,7 +38,9 @@ print("<div class=\"menu_izq bs-navbar-collapse\" >
 		print("<li><a href=\"mis-consultas.php\"><i class=\"icono izq fa fa-envelope\" style=\"font-size:30px\"></i><b>Consultas</b></a></li>");
 	
 		print("</ul>
- </div>");
+ </div>
+ </nav>
+ ");
  ?>
 
 

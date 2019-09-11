@@ -7399,3 +7399,120 @@ body.custom-background {
     margin-top: 4px;
     text-align: center;
 }
+
+/* tarjetas de trabajos */
+
+.wrap{
+  width: 100%;
+  margin: 8% auto 13% auto;
+  /* display: flex; */
+  text-align: center;
+}
+.tarjeta-wrap{
+  margin: 10px 10px 50px 10px;
+  display: inline-block;
+  perspective: 800;
+  -webkit-perspective: 800;
+  position: relative;
+}
+.tarjeta{
+  width: 400px;
+  height: 450px;
+/*  background: #F0CF00;*/
+  position: relative;
+  transform-style: preserve-3d;
+  transition: .7s ease;
+  box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
+  -webkit-box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
+  -moz-box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
+}
+.adelante, .atras{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.adelante{
+  width: 100%;
+  background-size: cover;
+  background: #E8EEEA;
+}
+.atras{
+  transform: rotateY(180deg);
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  word-break: break-all;
+  word-wrap: break-word;
+  text-align: center;
+  background: #FFFFFF;
+}
+.atras p{
+  color: #284c34 !important;
+  font-size: 20px;
+}
+.tarjeta-wrap:hover .tarjeta{
+  transform: rotateY(180deg) scale(1.5);
+/*    width: 550px;
+  	height: 600px;*/
+}
+
+#uno{
+	z-index: 0;
+}
+#dos{
+	z-index: 0;
+}
+#tres{
+	z-index: 0;
+}
+#cuatro{
+	z-index: 0;
+}
+#cinco{
+	z-index: 0;
+}
+#seis{
+	z-index: 0;
+}
+#uno:hover{
+	z-index: 2;
+}
+#dos:hover{
+	z-index: 2;
+}
+#tres:hover{
+	z-index: 2;
+}
+#cuatro:hover{
+	z-index: 2;
+}
+#cinco:hover{
+	z-index: 2;
+}
+#seis:hover{
+	z-index: 2;
+}
+@media (max-width:600px) {
+  .tarjeta{
+    width: 300px;
+    height: 350px;
+  }
+  .atras p {
+    font-size: 20px;
+  }
+
+  .atras p{
+  color: #284c34 !important;
+  font-size: 15px;
+}
+.tarjeta-wrap:hover .tarjeta{
+  transform: rotateY(180deg) scale(1.2);
+
+}
+}
+/*end targetas*/
