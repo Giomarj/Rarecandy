@@ -81,7 +81,7 @@ function cliente(){
 	}
 	
 	function obtener(){
-		$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer FROM cliente";
+		$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer, cliente_empresaid FROM cliente";
 		$res = $this->conexion->BD_Consulta($consulta);
 		return($res);	
 	}
@@ -89,16 +89,16 @@ function cliente(){
 	
 	function obtenerConFiltro($condicion,$order){
 		 if($condicion=="" && $order!="")
-				$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer FROM cliente $order";				
+				$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer, cliente_empresaid FROM cliente $order";				
 		 else{
 			 if($order=="" && $condicion!="")
-					$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer FROM cliente $condicion";				
+					$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer, cliente_empresaid FROM cliente $condicion";				
 			 else{
 				  if($order!="" && $condicion!="")		 
-					$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer FROM cliente $condicion $order";
+					$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer, cliente_empresaid FROM cliente $condicion $order";
 					else{
 						if($order=="" && $condicion=="")		 
-							$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer FROM cliente";
+							$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer, cliente_empresaid FROM cliente";
 						}				
 			  }
 		}
@@ -109,23 +109,23 @@ function cliente(){
 	
 	
 	function obtenerPaginados(){
-		$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer FROM cliente";
+		$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer, cliente_empresaid FROM cliente";
 		return($consulta);	
 	}
 	
 	
 	function obtenerPaginadosConFiltro($condicion,$order){
 		 if($condicion=="" && $order!="")
-				$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer FROM cliente $order";				
+				$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer, cliente_empresaid FROM cliente $order";				
 		 else{
 			 if($order=="" && $condicion!="")
-					$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer FROM cliente $condicion";				
+					$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer, cliente_empresaid FROM cliente $condicion";				
 			 else{
 				  if($order!="" && $condicion!="")		 
-					$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer FROM cliente $condicion $order";
+					$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer, cliente_empresaid FROM cliente $condicion $order";
 					else{
 						if($order=="" && $condicion=="")		 
-							$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer FROM cliente";
+							$consulta  = "SELECT cliente_CodPK, cliente_Nombre, cliente_DNI, cliente_Direccion, cliente_Numero, cliente_Portal, cliente_Piso, cliente_Letra, cliente_CodigoPostal, cliente_ProvinciaFK, cliente_Poblacion, cliente_Movil, cliente_Email, cliente_Email2, cliente_Telefono, cliente_ComentariosOtraInformacion, cliente_Login, cliente_Pass, cliente_Logo, cliente_Estado, cliente_NumeroMensajesPorLeer, cliente_empresaid FROM cliente";
 						}				
 			  }
 		}

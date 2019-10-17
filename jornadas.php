@@ -5,27 +5,35 @@ session_start();
 	include_once "clases/fechas.php";
 	include_once "clases/seguridad.php";
 	include_once "clases/paginacion_intranet.php";
-	include_once "clases/cliente.php";	
+	include_once "clases/paginacion.php";
+	include_once "clases/cliente.php";
+	include_once "clases/empleados.php";		
 	include_once "clases/provincia.php";
 
 
 	$cliente = new cliente();
-	$paginacion = new paginacion_intranet();
+	$empleados = new empleados();
+	$paginacion = new paginacion();
 	$conexion = new conexion();	
 	$provincia = new provincia();
     
     Seguridad();
 	Admin();
-	
+	$ocultarform="ocultarform";
+	$daterange ="";
 	$daterange3="";
-	$daterange2="";
+	$daterange2 ="";
+	$daterange4 ="";
 	$provincia_procedeFK_buscar=0;
+
+	if(isset($_POST['daterange3']) && trim($_POST['daterange3'])!="" && isset($_POST['daterange3']) && trim($_POST['daterange3'])!="")
+		$ocultarform="";
 	
 	if(isset($_GET['provincia_procedeFK']) && trim($_GET['provincia_procedeFK'])!="")
 		$provincia_procedeFK_buscar=$_GET['provincia_procedeFK'];
 
 	if(isset($_POST['daterange2']) && trim($_POST['daterange2'])!="")
-		$daterange2=$_POST['daterange2'];
+		$daterange4=$_POST['daterange2'];
 
 	if(isset($_POST['daterange3']) && trim($_POST['daterange3'])!="")
 		$daterange3=$_POST['daterange3'];
@@ -61,6 +69,11 @@ session_start();
         <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
         <script type="text/javascript" src="js/daterangepicker.js"></script>
 </head>
+<style type="text/css">
+	.ocultarform{
+		display: none;
+	}
+</style>
 <body class="home page-template-default page page-id-9 custom-background wp-custom-logo">
 	<header id="home" class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
 	<?php require "./layout/nav_logado.php"; ?>
@@ -82,10 +95,10 @@ session_start();
             
 	    <!-- buscador-->
 	    <div class="buscador">
-	    <form class="form" name="buscador_user" id="buscador_user" method="get" action="">
+	    <form class="form" name="buscador_user" id="buscador_user" method="post" action="">
 		<input type="hidden" name="aux_buscador" id="aux_buscador" />	
 			<div class="resultados">
-            <center><h4>Filtrar Por Fecha:</h4></center>
+            <h2>Filtrar por fecha para ver resultados</h2>
             <br>
             		<div class="row">
 								 
@@ -93,11 +106,11 @@ session_start();
 					           			 <div class='input-group date' id='datetimepicker'>
 					           			 	<div class="col-md-2"></div>	
 									 		<div class="col-md-5">
-									 			<label style="float: left;"><i class="fa fa-calendar" style="padding-right:3px; padding-bottom: 4px;"></i> Desde:</label>
-					               				 <input type='text' class="form-control" name="daterange2" id="daterange2" value="<?PHP print($daterange2);?>" placeholder="Seleccione Rango de Fecha" style="padding: 6px 65px;" autocomplete="off" />									 			
+									 			<label style="float: left;"><i class="fa fa-calendar" style="padding-right:3px; padding-bottom: 4px;"></i> Desde: <?PHP print($daterange4);?></label>
+					               				 <input type='text' class="form-control" name="daterange2" id="daterange2" value="<?PHP print($daterange4);?>" placeholder="Seleccione Rango de Fecha" style="padding: 6px 65px;" autocomplete="off" />									 			
 									 		</div>
 									 		<div class="col-md-5">
-									 			<label style="float: left;"><i class="fa fa-calendar" style="padding-right:4px; padding-bottom: 4px;"></i>Hasta:</label>
+									 			<label style="float: left;"><i class="fa fa-calendar" style="padding-right:4px; padding-bottom: 4px;"></i>Hasta: <?PHP print($daterange3);?></label>
 					               				 <input type='text' style="padding: 6px 65px;" class="form-control" name="daterange3" id="daterange3" value="<?PHP print($daterange3);?>" placeholder="Seleccione Rango de Fecha" autocomplete="off"/>									 			
 									 		</div>
 
@@ -107,7 +120,7 @@ session_start();
 						    
 				    </div>
 	</div> 
-		<div class="item" style="margin-right: 20px;">
+		<div class="item <?PHP print($ocultarform);?>" style="margin-right: 20px;">
 					<div style="float: right;" for="cbmostrar">
 			    		<br>
 					  <input type="checkbox" name="cbmostrar" class="fantasma" />
@@ -115,38 +128,18 @@ session_start();
 					</div>
 		</div>
 
-		<div class="item dvOcultar2">
+		<div class="item dvOcultar2 <?PHP print($ocultarform);?>">
 		<label class="label">Nombre</label><input autofocus type="text" class="input" name="nombre_cliente" id="nombre_cliente" value="<?PHP print($nombre_cliente_buscar);?>"/>
 		<span class="explicacion">Busca por cualquier dato de cliente, menos por observaciones, login y pass</span>
 		</div>
-		<div class="item" >
+		<div class="item <?PHP print($ocultarform);?>" >
                 <label class="label">Jornada</label>
-			<select class="select" name="provincia_procedeFK" id="provincia_procedeFK">				
-			<?PHP
-				if($provincia_procedeFK_buscar==0)
-					print("<option value=\"0\" selected=\"selected\">Todas</option>");
-				else
-					print("<option value=\"0\">Todas</option>");
-				
-				$condicionProvincia="";
-				$orderProvincia="ORDER BY provincia_Nombre";
-		
-				$resProvincia=$provincia->obtenerConFiltro($condicionProvincia,$orderProvincia);
-				$vectorProvincia=$provincia->conexion->BD_GetTupla($resProvincia);
-				
-				while($vectorProvincia!=NULL)
-				{
-					if($provincia_procedeFK_buscar==$vectorProvincia['provincia_CodPK'])
-						print("<option value=\"" . $vectorProvincia['provincia_CodPK'] . "\" selected=\"selected\">" . $vectorProvincia['provincia_Nombre'] . "</option>");
-					else
-						print("<option value=\"" . $vectorProvincia['provincia_CodPK'] . "\">" . $vectorProvincia['provincia_Nombre'] . "</option>");
-					
-					$vectorProvincia=$provincia->conexion->BD_GetTupla($resProvincia);
-				}//fin del while($vectorProvincia!=NULL)
-			?>
+			<select class="select" name="provincia_procedeFK" id="provincia_procedeFK">	
+				<option value="0" selected="selected">Completa</option>
+				<option value="1">media</option>			
 			</select>
                 </div>
-		<div class="item" >
+		<div class="item <?PHP print($ocultarform);?>" >
 		<label class="label">Estado</label>
 			<select class="select" name="estado_busqueda" id="estado_busqueda">
 			<?PHP
@@ -171,61 +164,67 @@ session_start();
 				<input type="submit" class="submit buscar dvOcultar" name="Jornada" value="Imprimir Jornadas" style="float: none; display: none;" onclick=this.form.action="generapdf.php">
 				<input type="submit" class="submit buscar dvOcultar2" name="enviar2" value="buscar" style="float: none;" onclick=this.form.action="jornadas.php">			
 		</div>
-
-		<?PHP
-			//paginacion de 50			
-			$condicion="WHERE (cliente_Nombre LIKE '%" . $nombre_cliente_buscar . "%'
-						OR cliente_DNI LIKE '%" . $nombre_cliente_buscar . "%'
-						OR cliente_Direccion LIKE '%" . $nombre_cliente_buscar . "%' OR
-						cliente_Numero LIKE '%" . $nombre_cliente_buscar . "%' OR
-						cliente_Portal LIKE '%" . $nombre_cliente_buscar . "%' OR
-						cliente_Piso LIKE '%" . $nombre_cliente_buscar . "%' OR
-						cliente_Letra LIKE '%" . $nombre_cliente_buscar . "%' OR
-						cliente_CodigoPostal LIKE '%" . $nombre_cliente_buscar . "%' OR
-						cliente_Poblacion LIKE '%" . $nombre_cliente_buscar . "%' OR
-						cliente_Movil LIKE '%" . $nombre_cliente_buscar . "%' OR
-						cliente_Email LIKE '%" . $nombre_cliente_buscar . "%' OR
-						cliente_Email2 LIKE '%" . $nombre_cliente_buscar . "%' OR
-						cliente_Telefono LIKE '%" . $nombre_cliente_buscar . "%')";
-			
-			if(strcmp($estado_busqueda,"Todos")!="")
-				$condicion=$condicion . " AND (cliente_Estado='" . $estado_busqueda . "')";
-			//le añadimos el parametro del provincia de procedencia
-			if($provincia_procedeFK_buscar!=0)
-				$condicion=$condicion . " AND (cliente_ProvinciaFK=" . $provincia_procedeFK_buscar . ")";	
-		?>
 		
 		
 	    </form>
         	<!-- acaba buscador-->
         </div>
-            
-         	
-            <ul id="listado_listados" class="dvOcultar2">
+            	
+            <ul id="listado_listados" class="dvOcultar2 <?PHP print($ocultarform);?>">
 		<?PHP
-			$order="ORDER BY cliente_Nombre";
+			if (isset($_POST['daterange2']) && isset($_POST['daterange3'])) {
+				$date1 = strtr($_POST['daterange2'], '/', '-');
+ 				$daterange=date('Y-m-d', strtotime($date1));
+				$date2 = strtr($_POST['daterange3'], '/', '-');
+ 				$daterange2=date('Y-m-d', strtotime($date2));
+		    }
+
+		 // 	   if ($_POST['daterange2']=="" && $_POST['daterange3']==""){
+			// 		$swhere = " ";
+			// 	} else {
+			// 	$swhere = " AND t.Fecha BETWEEN '$daterange' AND '$daterange2'"; 
+			// 	}
+				
+			// //paginacion de 50			
+			// $condicion=", stp_empresa e, cliente c
+			// 			WHERE e.empresa_CodPK = stp_users.user_empresaid 
+			// 			AND e.empresa_CodPK = c.cliente_empresaid 
+			// 			AND c.cliente_empresaid = ".$vector['cliente_empresaid']."
+			// 			AND (stp_users.user_name LIKE '%" . $nombre_cliente_buscar . "%'
+			// 			OR stp_users.user_gender LIKE '%" . $nombre_cliente_buscar . "%'
+			// 			OR stp_users.user_CodPK LIKE '%" . $nombre_cliente_buscar . "%' OR
+			// 			stp_users.user_Comment LIKE '%" . $nombre_cliente_buscar . "%')";
+			
+			// if(strcmp($estado_busqueda,"Todos")!="")
+			// 	$condicion=$condicion . " AND (cliente_Estado='" . $estado_busqueda . "')";
+			// //le añadimos el parametro del provincia de procedencia
+			// if($provincia_procedeFK_buscar!=0)
+			// 	$condicion=$condicion . " AND (cliente_ProvinciaFK=" . $provincia_procedeFK_buscar . ")";	
+			$order="ORDER BY user_name";
 		
 			//print($condicion);
-			$sql= $cliente->obtenerPaginadosConFiltro($condicion,$order);
-						
-			$paginacion->paginar($sql,50);
+			// $sql= $empleados->obtenerPaginadosConFiltro($condicion,$order);
+				$sql="SELECT user_CodPK, user_empresaid, user_id, user_Din, user_name, user_enroll_id, user_card_id, user_att_rules, user_att_default, user_default_weekend, user_gender, user_regsiter_date, user_id_no, user_phone, user_email, user_address, user_Comment, user_password, user_deptId, user_AttId, user_RuleId, user_WeekendId, user_LockedOut, user_IsApproved, user_LastLoginDate FROM stp_users, stp_empresa e, cliente c WHERE e.empresa_CodPK = stp_users.user_empresaid AND e.empresa_CodPK = c.cliente_empresaid AND c.cliente_empresaid = ".$vector['cliente_empresaid']." AND (stp_users.user_name LIKE '%" . $nombre_cliente_buscar . "%'
+						OR stp_users.user_gender LIKE '%" . $nombre_cliente_buscar . "%'
+						OR stp_users.user_CodPK LIKE '%" . $nombre_cliente_buscar . "%' OR
+						stp_users.user_Comment LIKE '%" . $nombre_cliente_buscar . "%') ORDER BY user_name";	
+			$paginacion->paginar($sql,30);
 				
 			// Mostrar resultados de la consulta
 			$nfilas = mysql_num_rows ($paginacion->pagi_result);
-			
 			if($nfilas==0)		
 				print("<li>No existen registros bajo los criterios de busqueda.</li>");
 			
 			for($i=0; $i<$nfilas;$i++)
 			{
-				$resultado = mysql_fetch_array ($paginacion->pagi_result);
+				$resultado = mysql_fetch_array($paginacion->pagi_result);
 				
 				if(fmod($i,2)==0)
 					print("<li id=\"rayado\">");
 				else
 					print("<li>");
 				
-				print("<a href=\"cliente_datos_contacto.php?codPK=" . $resultado['cliente_CodPK'] . $parametros_busqueda . "\">" . $resultado['cliente_CodPK'] . " - " . $resultado['cliente_Nombre'] . " | " . $resultado['cliente_Movil'] . " | " . $resultado['cliente_Email'] . "</a></li>");
+				print("<a href=\"reporte_jornada.php?daterange=". $daterange ."&daterange2=". $daterange2 ."&cod_empleado=" . $resultado['user_CodPK'] . "\">" . $resultado['user_CodPK'] . " - " . $resultado['user_name'] . " | " . $resultado['user_Comment'] . " | " . $resultado['user_gender'] . "</a></li>");
 			}//fin del for($i=0; $i<$nfilas;$i++)
 			
 		?>		    
@@ -238,10 +237,10 @@ session_start();
 			if($nfilas >= $paginacion->pagi_cuantos || $paginacion->pagi_actual > 1)
 			{
 			   //Incluimos la barra de navegación			
-			   print($paginacion->pagi_navegacion);
+			  print($paginacion->pagi_navegacion);
 			}
-
 		?>
+
  		</ul>
            </div>
           
