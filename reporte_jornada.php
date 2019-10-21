@@ -1,11 +1,11 @@
 <?PHP
-
+	ob_start();
 	session_start();
 
-	include_once "/clases/conexion.php";
-	include_once "/clases/seguridad.php";
-	include_once "/clases/fechas.php";
-	require('/clases/fpdf/fpdf.php');
+	include_once "clases/conexion.php";
+	include_once "clases/seguridad.php";
+	include_once "clases/fechas.php";
+	require('clases/fpdf/fpdf.php');
 	
 	$conexion = new conexion();
 
@@ -47,9 +47,9 @@
 	$res=$conexion->BD_Consulta($sql);
 	$vector=$conexion->BD_GetTupla($res);
 
-	$imagen_cabecera="./img/WhatsApp-Image-2019-05-29-at-4.04.07-PM.jpeg";
+	$imagen_cabecera="img/WhatsApp-Image-2019-05-29-at-4.04.07-PM.jpeg";
 	if(trim($vector['cliente_Logo'])!="")
-		$imagen_cabecera="./img/cliente/" . $vector['cliente_Logo'];
+		$imagen_cabecera="img/cliente/" . $vector['cliente_Logo'];
 
 	class PDF extends FPDF
 	{
@@ -84,7 +84,7 @@
 			
 			
 			$this->Ln();
-										
+
 		}
 	}
 	$pdf = new PDF();
@@ -206,6 +206,7 @@
 
 	$valor_rand=rand(0,100000);
 	$nombreSalida="jornada_" . $nombreEmpleado . "-" . $valor_rand . ".pdf";
-	$pdf->Output($nombreSalida);
+	$pdf->Output();
+	ob_end_flush();
 	}
 ?>
