@@ -95,45 +95,92 @@
 
 	$pdf->SetFont('Arial','',10);
 
-		$sqlPaquete="SELECT c.cliente_CodPK ,c.cliente_Nombre,c.cliente_Email,
-					e.empresa_id,e.empresa_nombre, e.empresa_nit,
-					t.Anio,t.Trimestre, u.user_Din, u.user_name,t.Fecha, f.fact_fecha_reg, f.fact_fecha_ini,f.fact_fecha_fin, TIME(f.fact_fecha_ini) hora_ini,TIME(f.fact_fecha_fin) hora_fin, f.totalhoras,
-					u.`user_gender` 'Sexo',u.`user_Comment`, CASE WHEN u.`user_LockedOut` = 0 THEN 'Activo' ELSE ' Inactivo' END Estatus
-					FROM `stp_ifact_table` f, stp_tiempo t, stp_users u, stp_empresa e, cliente c
+
+		 $mes=date('m', strtotime($daterange));
+		 $ano=date('Y', strtotime($daterange));
+
+		$sqlPaquete="SELECT tmp.Dia, X.cliente_CodPK ,X.cliente_Nombre,X.cliente_Email,
+					X.empresa_id,X.empresa_nombre, X.empresa_nit,
+					X.Anio,X.Trimestre, X.user_Din, X.user_name,X.Fecha, X.fact_fecha_reg, X.fact_fecha_ini, 
+					X.fact_fecha_fin,X.hora_ini,X.hora_fin, X.totalhoras, X.Sexo, X.`user_Comment`, X.Estatus
+					FROM (SELECT c.cliente_CodPK ,c.cliente_Nombre,c.cliente_Email,
+					e.empresa_id,e.empresa_nombre, e.empresa_nit,t.Anio,t.Trimestre, t.Mes, u.user_Din, u.user_name,t.Fecha, f.fact_fecha_reg, f.fact_fecha_ini,f.fact_fecha_fin, TIME(f.fact_fecha_ini) hora_ini,TIME(f.fact_fecha_fin) hora_fin, f.totalhoras, u.user_gender 'Sexo',u.user_Comment, CASE WHEN u.user_LockedOut = 0 THEN 'Activo' ELSE 'Inactivo' END Estatus
+					FROM stp_ifact_table f, stp_tiempo t, stp_users u, stp_empresa e, cliente c
 					where t.Fecha= f.fact_fecha_reg
-					and u.user_Din = f.fact_din
-					and e.empresa_CodPK = f.fact_empresaid
-					and e.empresa_CodPK = c.cliente_empresaid
-					and u.user_CodPK = ".$cod_empleado."
+					AND u.user_Din = f.fact_din
+					AND e.empresa_CodPK = f.fact_empresaid
+					AND e.empresa_CodPK = c.cliente_empresaid
+					AND u.user_CodPK = ".$cod_empleado."
 					AND t.Fecha BETWEEN '".$daterange."' AND '".$daterange2."'
-					order by 11";
-		$resPaquete=$conexion->BD_Consulta($sqlPaquete);
-		$tuplaPaquete=$conexion->BD_GetTupla($resPaquete);
+					) X RIGHT OUTER JOIN
+					(SELECT t2.Dia, t2.Fecha, t2.Mes FROM stp_tiempo t2 
+					WHERE month(t2.Fecha) =".$mes." AND year(t2.Fecha) =".$ano." ) tmp
+					ON X.Fecha = tmp.Fecha
+					ORDER BY 1";
+		$resPaquete2=$conexion->BD_Consulta($sqlPaquete);
+		$tuplaPaquete2=$conexion->BD_GetTupla($resPaquete2);
 
 	$dimension1=25;		
 	$dimension2=65;
 	$dimension3=20;
 	$dimension4=65;
 
-	$pdf->rellenarTabla4ColumnasTitulo('EMPRESA:',$dimension1,$tuplaPaquete['empresa_nombre'],$dimension2,'CIF:',$dimension3,$tuplaPaquete['empresa_nit'],$dimension4);
-	$pdf->rellenarTabla4ColumnasTitulo('TRABAJADOR:',$dimension1,$tuplaPaquete['user_name'],$dimension2,'NIF:',$dimension3,'',$dimension4);
+	$aux=false;
+	while($aux==false)
+	{
+		if ($tuplaPaquete2['Fecha']!=NULL) {
+			$pdf->rellenarTabla4ColumnasTitulo('EMPRESA:',$dimension1,$tuplaPaquete2['empresa_nombre'],$dimension2,'CIF:',$dimension3,$tuplaPaquete2['empresa_nit'],$dimension4);
+			$pdf->rellenarTabla4ColumnasTitulo('TRABAJADOR:',$dimension1,$tuplaPaquete2['user_name'],$dimension2,'NIF:',$dimension3,'',$dimension4);
 
 
-		$pdf->Cell(22,6,date('M Y', strtotime($tuplaPaquete['Fecha'])),1,1,'C',1);
-		$pdf->Cell(22,6,'Dias',1,0,'C',1);
-		$pdf->Cell(66,6,'Entrada',1,0,'C',1);
-		$pdf->Cell(66,6,'Salida',1,0,'C',1);
-		$pdf->Cell(22,6,'Horas Totales',1,1,'C',1);
+			$pdf->Cell(22,6,date('M Y', strtotime($tuplaPaquete2['Fecha'])),1,1,'C',1);
+			$pdf->Cell(22,6,'Dias',1,0,'C',1);
+			$pdf->Cell(66,6,'Entrada',1,0,'C',1);
+			$pdf->Cell(66,6,'Salida',1,0,'C',1);
+			$pdf->Cell(22,6,'Horas Totales',1,1,'C',1);
 
+			$aux=true;
+		}
+
+		$tuplaPaquete2=$conexion->BD_GetTupla($resPaquete2);
+	}
+
+		$sqlPaquete="SELECT tmp.Dia, X.cliente_CodPK ,X.cliente_Nombre,X.cliente_Email,
+					X.empresa_id,X.empresa_nombre, X.empresa_nit,
+					X.Anio,X.Trimestre, X.user_Din, X.user_name,X.Fecha, X.fact_fecha_reg, X.fact_fecha_ini, 
+					X.fact_fecha_fin,X.hora_ini,X.hora_fin, X.totalhoras, X.Sexo, X.`user_Comment`, X.Estatus
+					FROM (SELECT c.cliente_CodPK ,c.cliente_Nombre,c.cliente_Email,
+					e.empresa_id,e.empresa_nombre, e.empresa_nit,t.Anio,t.Trimestre, t.Mes, u.user_Din, u.user_name,t.Fecha, f.fact_fecha_reg, f.fact_fecha_ini,f.fact_fecha_fin, TIME(f.fact_fecha_ini) hora_ini,TIME(f.fact_fecha_fin) hora_fin, f.totalhoras, u.user_gender 'Sexo',u.user_Comment, CASE WHEN u.user_LockedOut = 0 THEN 'Activo' ELSE 'Inactivo' END Estatus
+					FROM stp_ifact_table f, stp_tiempo t, stp_users u, stp_empresa e, cliente c
+					where t.Fecha= f.fact_fecha_reg
+					AND u.user_Din = f.fact_din
+					AND e.empresa_CodPK = f.fact_empresaid
+					AND e.empresa_CodPK = c.cliente_empresaid
+					AND u.user_CodPK = ".$cod_empleado."
+					AND t.Fecha BETWEEN '".$daterange."' AND '".$daterange2."'
+					) X RIGHT OUTER JOIN
+					(SELECT t2.Dia, t2.Fecha, t2.Mes FROM stp_tiempo t2 
+					WHERE month(t2.Fecha) =".$mes." AND year(t2.Fecha) =".$ano." ) tmp
+					ON X.Fecha = tmp.Fecha
+					ORDER BY 1";
+		$resPaquete=$conexion->BD_Consulta($sqlPaquete);
+		$tuplaPaquete=$conexion->BD_GetTupla($resPaquete);
 
 
 	while($tuplaPaquete!=NULL)
 	{
+		$pdf->Cell(22,6,$tuplaPaquete['Dia'],1,0,'C');
+		if ($tuplaPaquete['Fecha']==NULL) {
+		$pdf->Cell(66,6,'',1,0,'C');
+		$pdf->Cell(66,6,'',1,0,'C');
+		$pdf->Cell(22,6,'',1,1,'C');
+		} else {
 		$nombreEmpleado=$tuplaPaquete['user_name'];
-		$pdf->Cell(22,6,date('d', strtotime($tuplaPaquete['Fecha'])),1,0,'C');
 		$pdf->Cell(66,6,date('H:i', strtotime($tuplaPaquete['hora_ini']))."h",1,0,'C');
 		$pdf->Cell(66,6,date('H:i', strtotime($tuplaPaquete['hora_fin']))."h",1,0,'C');
 		$pdf->Cell(22,6,$tuplaPaquete['totalhoras']."h",1,1,'C');
+		}
+
 
 		$tuplaPaquete=$conexion->BD_GetTupla($resPaquete);
 	}
@@ -159,6 +206,6 @@
 
 	$valor_rand=rand(0,100000);
 	$nombreSalida="jornada_" . $nombreEmpleado . "-" . $valor_rand . ".pdf";
-	$pdf->Output();
+	$pdf->Output($nombreSalida);
 	}
 ?>
