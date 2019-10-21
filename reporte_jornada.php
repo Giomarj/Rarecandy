@@ -96,7 +96,7 @@
 	$pdf->SetFont('Arial','',10);
 
 		$sqlPaquete="SELECT c.cliente_CodPK ,c.cliente_Nombre,c.cliente_Email,
-					e.empresa_id,e.empresa_nombre,
+					e.empresa_id,e.empresa_nombre, e.empresa_nit,
 					t.Anio,t.Trimestre, u.user_Din, u.user_name,t.Fecha, f.fact_fecha_reg, f.fact_fecha_ini,f.fact_fecha_fin, TIME(f.fact_fecha_ini) hora_ini,TIME(f.fact_fecha_fin) hora_fin, f.totalhoras,
 					u.`user_gender` 'Sexo',u.`user_Comment`, CASE WHEN u.`user_LockedOut` = 0 THEN 'Activo' ELSE ' Inactivo' END Estatus
 					FROM `stp_ifact_table` f, stp_tiempo t, stp_users u, stp_empresa e, cliente c
@@ -106,7 +106,7 @@
 					and e.empresa_CodPK = c.cliente_empresaid
 					and u.user_CodPK = ".$cod_empleado."
 					AND t.Fecha BETWEEN '".$daterange."' AND '".$daterange2."'
-					order by 8,7 DESC";
+					order by 11";
 		$resPaquete=$conexion->BD_Consulta($sqlPaquete);
 		$tuplaPaquete=$conexion->BD_GetTupla($resPaquete);
 
@@ -115,7 +115,7 @@
 	$dimension3=20;
 	$dimension4=65;
 
-	$pdf->rellenarTabla4ColumnasTitulo('EMPRESA:',$dimension1,$tuplaPaquete['empresa_nombre'],$dimension2,'CIF:',$dimension3,'',$dimension4);
+	$pdf->rellenarTabla4ColumnasTitulo('EMPRESA:',$dimension1,$tuplaPaquete['empresa_nombre'],$dimension2,'CIF:',$dimension3,$tuplaPaquete['empresa_nit'],$dimension4);
 	$pdf->rellenarTabla4ColumnasTitulo('TRABAJADOR:',$dimension1,$tuplaPaquete['user_name'],$dimension2,'NIF:',$dimension3,'',$dimension4);
 
 
@@ -133,27 +133,26 @@
 		$pdf->Cell(22,6,date('d', strtotime($tuplaPaquete['Fecha'])),1,0,'C');
 		$pdf->Cell(66,6,date('H:i', strtotime($tuplaPaquete['hora_ini']))."h",1,0,'C');
 		$pdf->Cell(66,6,date('H:i', strtotime($tuplaPaquete['hora_fin']))."h",1,0,'C');
-		$pdf->Cell(22,6,date('H:i', strtotime($tuplaPaquete['totalhoras']))."h",1,1,'C');
+		$pdf->Cell(22,6,$tuplaPaquete['totalhoras']."h",1,1,'C');
 
 		$tuplaPaquete=$conexion->BD_GetTupla($resPaquete);
 	}
 
 
-		$sqlPaquete="SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(totalhoras))) AS hours
-					FROM `stp_ifact_table` f, stp_tiempo t, stp_users u, stp_empresa e, cliente c
-					where t.Fecha= f.fact_fecha_reg
-					and u.user_Din = f.fact_din
-					and e.empresa_CodPK = f.fact_empresaid
+		$sqlPaquete="SELECT SUM(totalhoras) AS hours 
+					FROM `stp_ifact_table` f, stp_tiempo t, stp_users u, stp_empresa e, cliente c 
+					where t.Fecha= f.fact_fecha_reg 
+					and u.user_Din = f.fact_din 
+					and e.empresa_CodPK = f.fact_empresaid 
 					and e.empresa_CodPK = c.cliente_empresaid
 					and u.user_CodPK = ".$cod_empleado."
 					AND t.Fecha BETWEEN '".$daterange."' AND '".$daterange2."'";
-
 		$resPaquete=$conexion->BD_Consulta($sqlPaquete);
 		$tuplaTime=$conexion->BD_GetTupla($resPaquete);
 
 		$pdf->Cell(88,6,'',0,0,'C');
 		$pdf->Cell(66,6,'Totales del mes',1,0,'C',1);
-		$pdf->Cell(22,6,date('H:i', strtotime($tuplaTime['hours']))."h",1,1,'C',1);
+		$pdf->Cell(22,6,$tuplaTime['hours']."h",1,1,'C',1);
 		$pdf->Ln();
 		$pdf->Ln();
 
