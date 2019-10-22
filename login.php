@@ -29,6 +29,6 @@ if($usercont==0 && $passcont==0 && trim($username)!="" && trim($password)!="")
 	$_SESSION['password_salto']=trim($password);
 }//fin del if($usercont==0 && $passcont==0 && trim($username)!="" && trim($password)!="")
 
-print("<script>document.location.href='inicio-logado.php'</script>");
+print("<script>document.location.href='jornadas.php'</script>");
 exit();
 ?>

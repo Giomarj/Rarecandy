@@ -120,25 +120,25 @@ session_start();
 						    
 				    </div>
 	</div> 
-		<div class="item <?PHP print($ocultarform);?>" style="margin-right: 20px;">
+<!-- 		<div class="item <?PHP print($ocultarform);?>" style="margin-right: 20px;">
 					<div style="float: right;" for="cbmostrar">
 			    		<br>
 					  <input type="checkbox" name="cbmostrar" class="fantasma" />
 					  Imprimir jornadas de todos los empleados
 					</div>
-		</div>
+		</div> -->
 
-		<div class="item dvOcultar2 <?PHP print($ocultarform);?>">
+		<div class="item dvOcultar2 <?PHP print($ocultarform);?>" style="margin-left: 300px;">
 		<label class="label">Nombre</label><input autofocus type="text" class="input" name="nombre_cliente" id="nombre_cliente" value="<?PHP print($nombre_cliente_buscar);?>"/>
 		<span class="explicacion">Busca por cualquier dato de cliente, menos por observaciones, login y pass</span>
 		</div>
-		<div class="item <?PHP print($ocultarform);?>" >
+<!-- 		<div class="item <?PHP print($ocultarform);?>" >
                 <label class="label">Jornada</label>
 			<select class="select" name="provincia_procedeFK" id="provincia_procedeFK">	
 				<option value="0" selected="selected">Completa</option>
 				<option value="1">media</option>			
 			</select>
-                </div>
+        </div> -->
 		<div class="item <?PHP print($ocultarform);?>" >
 		<label class="label">Estado</label>
 			<select class="select" name="estado_busqueda" id="estado_busqueda">
@@ -161,7 +161,7 @@ session_start();
 			</select>
 		</div>	
 		<div>
-				<input type="submit" class="submit buscar dvOcultar" name="Jornada" value="Imprimir Jornadas" style="float: none; display: none;" onclick=this.form.action="generapdf.php">
+<!-- 				<input type="submit" class="submit buscar dvOcultar" name="Jornada" value="Imprimir Jornadas" style="float: none; display: none;" onclick=this.form.action="generapdf.php"> -->
 				<input type="submit" class="submit buscar dvOcultar2" name="enviar2" value="buscar" style="float: none;" onclick=this.form.action="jornadas.php">			
 		</div>
 		
@@ -224,7 +224,7 @@ session_start();
 				else
 					print("<li>");
 				
-				print("<a href=\"reporte_jornada.php?daterange=". $daterange ."&daterange2=". $daterange2 ."&cod_empleado=" . $resultado['user_CodPK'] . "\">" . $resultado['user_CodPK'] . " - " . $resultado['user_name'] . " | " . $resultado['user_Comment'] . " | " . $resultado['user_gender'] . "</a></li>");
+				print("<a href=\"reporte_jornada.php?daterange=". $daterange ."&daterange2=". $daterange2 ."&cod_empleado=" . $resultado['user_CodPK'] . "\" target=\"_blank\">" . $resultado['user_CodPK'] . " - " . $resultado['user_name'] . " | " . $resultado['user_Comment'] . " | " . $resultado['user_gender'] . "</a></li>");
 			}//fin del for($i=0; $i<$nfilas;$i++)
 			
 		?>		    

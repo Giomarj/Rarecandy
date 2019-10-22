@@ -180,8 +180,8 @@
 		$pdf->Cell(66,6,date('H:i', strtotime($tuplaPaquete['hora_fin']))."h",1,0,'C');
 		$pdf->Cell(22,6,$tuplaPaquete['totalhoras']."h",1,1,'C');
 		}
-
-
+		
+		
 		$tuplaPaquete=$conexion->BD_GetTupla($resPaquete);
 	}
 
