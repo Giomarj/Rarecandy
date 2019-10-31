@@ -32,7 +32,7 @@
 <li id="menu-item-21" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-21"><a href="#aboutus">Quiénes somos</a></li>
 <li id="menu-item-24" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24"><a href="#contact">Contactar</a></li>
 <li id="menu-item-201" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-201"><a href="#focus">Servicios</a></li>
-<li id="menu-item-201" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-201"><a href="#" class="" data-toggle="modal" data-target="#loginModal">Iniciar sesión</a></li>
+<li id="menu-item-201" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-201"><a href="#" class="" data-toggle="modal" data-target="#loginModal"><i class="icono izq fa fa-user-o" style="font-size:17px"></i> Soy Cliente</a></li>
 
 
 

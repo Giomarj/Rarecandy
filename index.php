@@ -34,17 +34,15 @@ if (isset($_POST['pirate-forms-contact-name'], $_POST['pirate-forms-contact-emai
 <!-- / Google Analytics by MonsterInsights -->
 
 <link rel='stylesheet' id='wp-block-library-css'  href='css/style.min.css' type='text/css' media='all' />
-<link rel='stylesheet' id='font-awesome-5-css'  href='css/all.min.css' type='text/css' media='all' />
-<link rel='stylesheet' id='font-awesome-4-shims-css'  href='css/v4-shims.min.css' type='text/css' media='all' />
+
 <link rel='stylesheet' id='themeisle-block_styles-css'  href='css/style2.css' type='text/css' media='all' />
 <link rel='stylesheet' id='contact-form-7-css'  href='css/style3.css' type='text/css' media='all' />
 <link rel='stylesheet' id='dashicons-css'  href='css/dashicons.min.css' type='text/css' media='all' />
-<link rel='stylesheet' id='obfx-module-pub-css-iconos-de-men├║-0-css'  href='css/font-awesome.min.css' type='text/css' media='all' />
-<link rel='stylesheet' id='obfx-module-pub-css-iconos-de-men├║-1-css'  href='css/public.css' type='text/css' media='all' />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel='stylesheet' id='zerif_font-css'  href='//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C400italic%7CMontserrat%3A400%2C700%7CHomemade+Apple&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
 <link rel='stylesheet' id='zerif_font_all-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300%2C300italic%2C400%2C400italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic&#038;subset=latin&#038;ver=5.2.1' type='text/css' media='all' />
 <link rel='stylesheet' id='zerif_bootstrap_style-css'  href='css/bootstrap.css' type='text/css' media='all' />
-<link rel='stylesheet' id='zerif_fontawesome-css'  href='css/font-awesome2.min.css' type='text/css' media='all' />
+
 <link rel='stylesheet' id='zerif_style-css'  href='css/style4.css' type='text/css' media='all' />
 
 <!--[if lt IE 9]>
@@ -63,24 +61,16 @@ if (isset($_POST['pirate-forms-contact-name'], $_POST['pirate-forms-contact-emai
 </head>
 
 
-        <body class="home page-template-default page page-id-9 custom-background wp-custom-logo" >
-
-        <div class="preloader"><div class="status">&nbsp;</div></div>
-
-<div id="mobilebgfix">
-        <div class="mobile-bg-fix-img-wrap">
-                <div class="mobile-bg-fix-img"></div>
-        </div>
-        <div class="mobile-bg-fix-whole-site">
+<body class="home page-template-default page page-id-9 custom-background wp-custom-logo" >
 
 
 <header id="home" class="header" itemscope="itemscope" itemtype="">
 <?php require "./layout/nav.php"; ?>
         <!-- / END TOP BAR -->
 <div class=" home-header-wrap"><div class="header-content-wrap "><div class="container"><h1 class="intro-text">.<h1 id="extra2">Servicios tecnológicos a tu alcance</h1></h1>
-<div class="buttons">
-    <a href="#" class="btn btn-primary custom-button green-btn" data-toggle="modal" data-target="#loginModal">Iniciar sesión</a>
-</div>
+<!-- <div class="buttons">
+    <a href="#" class="btn btn-primary custom-button green-btn" data-toggle="modal" data-target="#loginModal">Area de Cliente</a>
+</div> -->
 </div></div><!-- .header-content-wrap --><div class="clear"></div>
 </div>
 
@@ -447,7 +437,7 @@ Instrumentando las soluciones a través de las aplicaciones de diferentes plataf
         <!-- SECTION HEADER -->
         <div class="section-header">
 
-                <h2 class="white-text">Contacta con nosotros ahora</h2> </div>
+                <h2 class="neon-text">Contacta con nosotros ahora</h2> </div>
         <!-- / END SECTION HEADER -->
 
         <div class="row">

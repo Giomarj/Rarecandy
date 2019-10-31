@@ -125,6 +125,7 @@
 	$dimension3=20;
 	$dimension4=65;
 
+	$contau=0;
 	$aux=false;
 	while($aux==false)
 	{
@@ -141,7 +142,10 @@
 
 			$aux=true;
 		}
-
+		if ($contau == 31) {
+			$aux=true;
+		}
+		$contau=$contau+1;
 		$tuplaPaquete2=$conexion->BD_GetTupla($resPaquete2);
 	}
 
@@ -166,24 +170,29 @@
 		$resPaquete=$conexion->BD_Consulta($sqlPaquete);
 		$tuplaPaquete=$conexion->BD_GetTupla($resPaquete);
 
-
-	while($tuplaPaquete!=NULL)
-	{
-		$pdf->Cell(22,6,$tuplaPaquete['Dia'],1,0,'C');
-		if ($tuplaPaquete['Fecha']==NULL) {
-		$pdf->Cell(66,6,'',1,0,'C');
-		$pdf->Cell(66,6,'',1,0,'C');
-		$pdf->Cell(22,6,'',1,1,'C');
-		} else {
-		$nombreEmpleado=$tuplaPaquete['user_name'];
-		$pdf->Cell(66,6,date('H:i', strtotime($tuplaPaquete['hora_ini']))."h",1,0,'C');
-		$pdf->Cell(66,6,date('H:i', strtotime($tuplaPaquete['hora_fin']))."h",1,0,'C');
-		$pdf->Cell(22,6,$tuplaPaquete['totalhoras']."h",1,1,'C');
+		if($tuplaPaquete==NULL)
+		{
+		    print("<script>document.location.href='inicio-logado.php'</script>");
+		    exit();
 		}
-		
-		
-		$tuplaPaquete=$conexion->BD_GetTupla($resPaquete);
-	}
+		$nombreEmpleado="";
+		while($tuplaPaquete!=NULL)
+		{
+			$pdf->Cell(22,6,$tuplaPaquete['Dia'],1,0,'C');
+			if ($tuplaPaquete['Fecha']==NULL) {
+			$pdf->Cell(66,6,'',1,0,'C');
+			$pdf->Cell(66,6,'',1,0,'C');
+			$pdf->Cell(22,6,'',1,1,'C');
+			} else {
+			$nombreEmpleado=$tuplaPaquete['user_name'];
+			$pdf->Cell(66,6,date('H:i', strtotime($tuplaPaquete['hora_ini']))."h",1,0,'C');
+			$pdf->Cell(66,6,date('H:i', strtotime($tuplaPaquete['hora_fin']))."h",1,0,'C');
+			$pdf->Cell(22,6,$tuplaPaquete['totalhoras']."h",1,1,'C');
+			}
+
+
+			$tuplaPaquete=$conexion->BD_GetTupla($resPaquete);
+		}
 
 
 		$sqlPaquete="SELECT SUM(totalhoras) AS hours 
@@ -196,6 +205,12 @@
 					AND t.Fecha BETWEEN '".$daterange."' AND '".$daterange2."'";
 		$resPaquete=$conexion->BD_Consulta($sqlPaquete);
 		$tuplaTime=$conexion->BD_GetTupla($resPaquete);
+
+		if($tuplaTime==NULL)
+		{
+		    print("<script>document.location.href='inicio-logado.php'</script>");
+		    exit();
+		}
 
 		$pdf->Cell(88,6,'',0,0,'C');
 		$pdf->Cell(66,6,'Totales del mes',1,0,'C',1);

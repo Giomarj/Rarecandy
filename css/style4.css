@@ -7241,7 +7241,8 @@ width: 100%;
         text-transform: uppercase;
 
 }
-.section-header h2,.section-legend{
+	/*		color limens*/
+/*.neon-text{
                 color: #e6ffff;
         text-shadow:
                 0 0 5px rgba(0,178,255,1),
@@ -7253,7 +7254,7 @@ width: 100%;
                 0 0 100px rgba(38,104,127,1),
                 0 0 140px rgba(38,104,127,1),
                 0 0 180px rgba(38,104,127,1)
-}
+}*/
 
 .intro-text{
         background-image:       url("../img/WhatsApp-Image-2019-05-29-at-4.04.07-PM.jpeg");
@@ -7382,6 +7383,7 @@ body.custom-background {
         padding: 5px 0 30px;
 }
         body.custom-background {
+        	body.custom-background { background-image: url("../img/alexandru-acea-1085875-unsplash.jpg"); background-position: left top; background-size: inherit; background-repeat: no-repeat; background-attachment: fixed; }
         animation: movimiento 10s infinite linear alternate;
 }
 }

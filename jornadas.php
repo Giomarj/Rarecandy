@@ -18,7 +18,6 @@ session_start();
 	$provincia = new provincia();
     
     Seguridad();
-	Admin();
 	$ocultarform="ocultarform";
 	$daterange ="";
 	$daterange3="";
@@ -128,7 +127,7 @@ session_start();
 					</div>
 		</div> -->
 
-		<div class="item dvOcultar2 <?PHP print($ocultarform);?>" style="margin-left: 300px;">
+		<div class="item dvOcultar2 bnombre <?PHP print($ocultarform);?>">
 		<label class="label">Nombre</label><input autofocus type="text" class="input" name="nombre_cliente" id="nombre_cliente" value="<?PHP print($nombre_cliente_buscar);?>"/>
 		<span class="explicacion">Busca por cualquier dato de cliente, menos por observaciones, login y pass</span>
 		</div>

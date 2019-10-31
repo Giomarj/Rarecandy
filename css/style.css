@@ -642,3 +642,28 @@ border-radius-topright:5px;
 }
 .cerrar{background:#e7e7e7 url(../images/cerrar.gif) top center repeat-x;clear:both; float:right; text-indent:-9999px; width:35px; height:35px;  }
 .atras{ margin:10px 0 10px 10px; width:80px; display:block; float:left; clear:both; background:#1493ae url(../images/bullet.png) 10px center no-repeat; color:#fff !important; border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:20px; padding:0 0 0 25px; }
+
+.bnombre{
+margin-left: 300px;
+}
+
+@media (max-width:1199px) {
+.bnombre{
+margin-left: 190px;
+}
+}
+@media (max-width:991px) {
+.bnombre{
+margin-left: 190px;
+}
+}
+@media (max-width:768px) {
+.bnombre{
+margin-left: 80px;
+}
+}
+@media (max-width:599px) {
+.bnombre{
+margin-left: 40px;
+}
+}
